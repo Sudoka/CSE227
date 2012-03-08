@@ -1,0 +1,101 @@
+\section{Machine Description}
+The machine is a virtual machine running on top of a xen hypervisor, the
+description mainly concern the hardware of the hypervisor.
+
+\subsection{Processor}
+The hypervisor is running an Intel quad core processor of the Sandy Bridge generation.
+This is an x86-64 architecture.
+The exact model of the CPU is \emph{Intel(R) Core(TM) i5-2500 CPU @ 3.30GHz}. \cite{intel-i5-2500}
+The processor integrates the memory controller.
+
+Detailled characteristics of the hardware processor :
+\begin{description}
+\item[CPU clock frequency] 3300.152 Mhz
+\item[L1 cache] 64 KB
+\begin{description}
+\item[Data cache] 32 KB
+\item[Instruction cache] 32 KB
+\end{description}
+\item[L2 cache] 256 KB
+\item[L3 cache] 6 MB
+\item[Address sizes] 36 bits physical, 48 bits virtual
+\end{description}
+The virtual machine is restricted to two virtual processor.
+
+\subsection{Motherboard buses}
+The motherboard is an \emph{Intel DQ67OW} \cite{dq670w-motherboard}. It is using an \emph{Intel Q67
+Express Chipset}. \cite{q67-chipset}
+The processor is connected to the southbridge chipset using a \emph{DMI 2.0} bus which
+allow a transfer rate up to 20Gb/s.
+
+\subsection{Ram}
+The host system is equipped with 16GB of DDR3.
+The memory controller is directly integrated in the CPU, according to the
+specification of the processor, the memory bus frequence is 1333Mhz which allow a bandwidth up
+to 21 GB/s. \cite{intel-i5-2500}
+
+\subsection{Disk}
+\subsubsection{Base hardware}
+The system is running on top of 6 hard disk drives.
+Four of them are \emph{Hitachi Deskstar P7K500}\footnote{The full reference is
+Hitachi HDP725050GLA360}.
+One of them is an \emph{Hitachi Deskstar 7K1000.C}\footnote{The full reference
+is Hitachi HDS721050CLA362}.
+The fifth one is only used for backup purpose so we are not interrested in his
+specification.
+
+The P7K500 has the following characteristics \cite{p7k500} :
+\begin{description}
+\item[Rotational speed] 7200 RPM
+\item[Cache size] 16 MB of cache
+\item[Size] 500GB
+\item[Max Media transfer rate] 1138 Mbit/s
+\end{description}
+The 7K1000.C has the same characteristics \cite{7K1000.C} excepted for the maximum media transfer
+rate which is 1546 Mbit/s due to differences in the architecture of the disks.
+
+\subsubsection{Hypervisor usage of the disks}
+These disks are aggregated at the hypervisor level using the linux mdadm
+software utility.
+The hypervisor root file system runs on top of a RAID 1 array of four disks and
+one hot spare.
+The data are stored on a software RAID 10 array of 4 disks and one hot spare.
+The hypervisor also runs a logical volume manager on top of the RAID10 array to
+ease the management.
+
+\subsubsection{Virtual machine disk}
+The virtual machine disk is a logical volume.
+
+\paragraph{Read performance}
+Any read operation incurs two read a block on two different disks so the
+performances are triggered down by the worst disk model.
+Without any overload and in a perfect situation, the performance of sequential read
+operation would be the sum of the bandwith of the four disks.
+
+\paragraph{Write performance}
+For a write operation, any write operation implies to write on the four disks.
+Again performance are triggered down by the worst disk model.
+Without any overload and in a perfect situation, the performance of sequential
+write would be two times the bandwith of the worst disk.
+
+\subsubsection{Performance penality}
+TBD.
+
+\subsection{Network}
+The network card is integrated to the moterboard. It's an \emph{Intel® 82579LM Gigabit
+Ethernet Controller} which is a gigabit ethernet controller.
+The server is connected to a switch which port are running at 100 mb/s.
+
+\subsection{Operating System}
+The operating system is Solaris 11.
+Output of the uname command :
+\begin{verbatim}
+SunOS solaris1 5.11 11.0 i86pc i386 i86pc
+\end{verbatim}
+Content of the /etc/release file :
+\begin{verbatim}
+                           Oracle Solaris 11 11/11 X86\\
+  Copyright (c) 1983, 2011, Oracle and/or its affiliates.  All rights reserved.\\
+                            Assembled 18 October 2011
+\end{verbatim}
+

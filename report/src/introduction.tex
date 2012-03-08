@@ -1,0 +1,70 @@
+\section{Context}
+As services are often developped around virtualization, vulnerabilities in hypervisors can now
+have critical impact on businesses.
+
+\subsection{Impact of hypervisor vulnerabilites}
+We assume that the attacker has access to a virtual machine running on a shared
+host.
+If an attacker is able to find a vulnerabilitie in the hypervisor, it may have
+terrible consequence on the other virtual machines :
+\begin{description}
+\item[Denial of Service] If the attacker is able to crash the hypervisor or part
+of it, he could impact all the virtual machine running on top of it.
+\item[Data leak] If an attacker is able to read arbitrary location in the memory
+or hard drive of the hypervisor, he could steal business critical information.
+Even through an attacker can't find a way to execute code he can still have
+access of some resources like the hard drive and the attacker can steal
+other users information or sensitive data.
+\item[Control flow hijacking] This case would be the worst one. If the attacker
+is able to execute arbitrary code in the host, he would have access of all
+resources in the host, including the ressources of the other virtual machines.
+This would allow him to access data, crash the other virtual machines but also
+execute more subtle attacks.
+\end{description}
+
+These attacks are widely documented in the litterature, the main point is that
+vulnerabilities at the hypervisor level may allow an attacker to have access to
+the host resources but also to other virtual machines.
+
+\section{Aim}
+We think that we may answer the following questions :
+\begin{itemize}
+\item Are there similarities in the vulnerabilites which were already disclosed ?
+\item Are the recent discolsed vulnerabilities exploitable to gain access to host
+ressources from the guest ?
+\item Can we easily find new vulnerabilities ?
+\item How can we detect or prevent them ?
+\end{itemize}
+
+\section{Study case}
+There are many ways to acces a virtual machine, through other vulnerabilities of
+the softwares which are running inside of the virtual machine or through
+usage of a public service (e.g. VPS provided by \emph{Rackspace} or instances
+provided by \emph{Amazon EC2}).
+In our research, we assume that the attacker has access to a virtual machine
+running on top of a shared host.
+Our study will be focused on two majors software that are VMware Workstation and QEMU-KVM on Linux.
+
+
+Our research will be divided in three categories:
+Detections:
+
+Exploitation:
+
+We will try to exploit one of the vulnerabilities cited before or new ones
+detected by as, this is the most important part of our research project because,
+if we successfully exploit one vulnerabilitie we will be able to have access to
+the host and demonstrate the consequence of that
+
+Defence:
+
+If we exploit a vulnerability with success the next step in our research is to
+propose some kind of defense to this problem.
+
+Conclusion
+
+Now a days the virtualization is part of our live and we have to take care of
+this new technological
+
+
+\section{Awaited result}
