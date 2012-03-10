@@ -2,10 +2,15 @@
 With the emergence of cloud computing and server consolidation at large scale,
 virtualization has reached an important status in the business development and IT management
 of almost all companies.
-Usually virtualization is also considered as a way to isolate application, for
-performance and for security.
-Thus, vulnerabilities in hypervisors can now have a critical impact and defeat
+Usually virtualization is considered as a way to isolate application, for
+performance and for security reason.
+Vulnerabilities in hypervisors can now have a critical impact and defeat
 the assumption that virtualization is a protection.
-Some vukkj
-Many open source software are already 
-Possible demultiplication of vulnerabilitie impact of one application.
+An application vulnerabilitie coupled to an hypervisor vulnerabilitie could
+possibly allow an attacker to take control of hundreds of virtual machine.
+
+Some open source operating system already includes additional security measures
+to isolate the different virtual machine, for example the Linux distribution
+\emph{Ubuntu}\cite{ubuntu} choosed to add an isolation level by associating a different
+\emph{AppArmor}\cite{apparmor} profile with each guest virtual machine running
+qemu-kvm.
