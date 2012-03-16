@@ -9,8 +9,9 @@ the assumption that virtualization is a protection.
 An application vulnerabilitie coupled to an hypervisor vulnerabilitie could
 possibly allow an attacker to take control of hundreds of virtual machine.
 
-Some open source operating system already includes additional security measures
-to isolate the different virtual machine, for example the Linux distribution
-\emph{Ubuntu}\cite{ubuntu} choosed to add an isolation level by associating a different
-\emph{AppArmor}\cite{apparmor} profile with each guest virtual machine running
-qemu-kvm.
+Some work attempt to reduce the Trusted Computing Base to improve security.
+Other design of virtual machine monitor (VMM) allow the user to benefit of the
+existing security functionnalities of the operating system in addition to the
+VMM isolation.
+The major improvement in isolation are achieved by the new functionalities
+offered by the hardware manufacturers through hardware-assisted virtualization.

@@ -1,0 +1,46 @@
+\section{Trends}
+Since the beginning of the mass adoption of virtualization solutions on x86, a
+number of solution attempting to improve security has been seen.
+The major improvements come from the hardware manufacturers but some 
+security improvement have also been offered by the software side.
+
+\subsection{Software solutions}
+Different strategies have been adopted depending on the type of the VMM.
+
+\paragraph{Reducing the Trusted Computing Base (TCB)}
+It is received wisdom that a smaller TCB corresponds to more trustworthy code.
+Some previous work on the Xen\cite{xen} hypervisor attempted to reduce the
+TCB\cite{xen-disaggregation} to
+improve security.
+This is also something claimed by \emph{VMware}\cite{vmware-footprint} who
+compares the size of their hypervisor ESXi (now renamed \emph{VMware vSphere
+Hypervisor}) to \emph{Microsoft Hyper-V}.
+This is a solution for all types of hypervisors.
+
+\paragraph{Using the operating system functionalities}
+Type 2 VMM (VMware Player, VMware Workstation, QEMU, VirtualBox...) run on top
+of an other operating system.
+This allow the user to isolate the different virtual machines using the
+operating system functionnalities.
+Some open source operating system already includes additional security measures
+to isolate the different virtual machine, for example the Linux distribution
+\emph{Ubuntu}\cite{ubuntu} choosed to add an isolation level by associating a different
+\emph{AppArmor}\cite{apparmor} profile with each guest virtual machine running
+qemu-kvm.
+
+\subsection{Hardware solutions}
+Without hardware support, virtualization is achieved by two way :
+\begin{itemize}
+\item Binary translation, which implies to rewrite every instruction. This is
+really expensive in term of performance.
+\item Paravirtualization, where the guest OS is modified to call the hypervisor
+instead of executing privileged instruction.
+\end{itemize}
+
+As seen before, part of the actual work around virtualization security is aimed at
+reducing the TCB and hardware assisted virtualization.
+
+\subsubsection{Processor and memory virtualization}
+Intel VT avoid
+
+\subsubsection{Device virtualization}
