@@ -1,3 +1,4 @@
+\newpage
 \section{Trends}
 Since the beginning of the mass adoption of virtualization solutions on x86, a
 number of solution attempting to improve security has been seen.
@@ -38,9 +39,46 @@ instead of executing privileged instruction.
 \end{itemize}
 
 As seen before, part of the actual work around virtualization security is aimed at
-reducing the TCB and hardware assisted virtualization.
+reducing the TCB and hardware assisted virtualization achieve by reducing the
+number of functionnalities wich the VMM needs to implement.
 
-\subsubsection{Processor and memory virtualization}
-Intel VT avoid
+\subsubsection{Processor and MMU virtualization}
+In 2005, \emph{Intel} introduced a new set of instruction called VT-x rapidly
+followed by \emph{AMD} with it's AMD-V technology.
+These technology avoided the need of binary translation by executing the guest
+OS in a different privilege ring as in paravirtualization.
+The solution introduced to avoid rewriting the guest OS code was to allow the
+VMM to define the behavior of priviliged instruction in the guest OS.
+With these technologie, the VMM is able to configure the processor to produce a
+hardware fault trapping into the VMM when the guest OS execute a priviliged
+instruction.
+This instruction set reduce the amount of code needed.
+
+The adoption was slowed by the necessity to trap into the VMM on each priviliged
+instruction causing a big performance penality.
+Later, Intel and AMD introduced new instruction sets (Extension Page Table (EPT) and
+Rapid Virtualization Indexing (RVI)) to avoid the traps into the VMM on page table
+updates.
+This avoided the need for the VMM to emulate the MMU.
 
 \subsubsection{Device virtualization}
+As seen before, many of the vulnerabilities come from the devices
+virtualization.
+Again, Intel and AMD introduced two new instruction sets respectivly called
+VT-d and AMD-Vi to improve performance and security.
+These instruction sets allow the re-mapping of memory for devices using Direct
+Memory Access (DMA).
+They introduce a I/O Memory Management Unit (IOMMU) on the chipset intended to
+map the guest memory to the host memory in the manner of the EPT/RVI.
+The IOMMU allows to dedicate a device to a virtual machine and still maintaining the
+memory isolation.
+These techonologies avoid the need of device emulation or paravirtualized
+devices again reducing the TCB.
+
+One main problem with IOMMU is that the physical host needs to have one
+set of device (network card, hard disk drive...) for each virtual machine.
+Some new specification like the Single Root I/O Virtualization (SR-IOV)
+developped by the PCI-SIG (PCI Special Interest Group)
+address this problem by allowing a device to simulate multiple devices.
+For example, Cisco UCS M81KR network card allow to simulate up to 128 virtual
+devices including virtual NIC and HBA.
