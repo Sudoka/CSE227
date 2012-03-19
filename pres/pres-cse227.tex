@@ -57,8 +57,11 @@ Past and future}
 \begin{frame}{CVE Statistics}
 	\begin{itemize}
 	\item 500 CVE entries related to VMWare
-	\item 30 CVE entry related to QEMU KVM
-	\item \emph{Nelson Elhage} breaked out of KVM (demonstrated at DEFCON and Back Hat)
+	\item[$\Rightarrow$]\emph{Many products and many third party libraries}\\
+	\item 41 CVE entries related to QEMU KVM
+	\item[$\Rightarrow$]\emph{Doesn't include Linux/third party libraries bugs}\\
+	\item 68 CVE entries related to Xen
+	\item[$\Rightarrow$]\emph{Doesn't include Linux/third party libraries bugs}\\
 	\end{itemize}
 \end{frame}
 
@@ -73,6 +76,7 @@ Past and future}
 	\begin{itemize}
 	\item Codebase is really small
 	\item Difficult to gather information due to the bad tagging in the bug tracker
+	\item \emph{Nelson Elhage} breaked out of KVM (demonstrated at DEFCON and Back Hat)
 	\end{itemize}
 	\end{block}
 \end{frame}
@@ -90,10 +94,13 @@ Past and future}
 \begin{frame}{Hardware improvements}
 	\begin{itemize}
 	\item Intel VT-x and AMD-V instruction sets
-	\item Intel EPT and AMD RVI allow better virtualization of MMU
+	\item[$\Rightarrow$] \emph{Avoid binary translation and Guest OS modification}\\
+	\item Intel EPT and AMD RVI instruction set
+	\item[$\Rightarrow$] \emph{Virtualization of MMU, no need to trap into hypervisor on page update}\\
 	\item Intel VT-d and AMD-V for IOMMU virtualization
+	\item[$\Rightarrow$] \emph{Avoid emulated/paravirtualized devices, allow to dedicate a device to a virtual machine}\\
 	\item SR-IOV allow device virtualization
-	\item[$\Rightarrow$] Up to 128 virtual network card using \emph{Cisco Palo}
+	\item[$\Rightarrow$] \emph{Up to 128 virtual network card with one physical device (e.g. Cisco Palo)}
 	\end{itemize}
 	\alert{Reduce code quantity and thus bugs}
 \end{frame}
