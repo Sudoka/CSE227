@@ -2,6 +2,32 @@
 As services are often developped around virtualization, vulnerabilities in hypervisors can now
 have critical impact on businesses.
 
+\subsection{Virtualization Evolution}
+Virtualization has become a big part of the business in IT environment because 
+of it's flexibility and optimization of performance, example instead of using one physical
+machine of each employee, the  company can have a centralized data center and the
+employee could open his session in every terminal available in the company.
+
+ \includegraphics {vdivdm_diagram.png}
+
+This kind of approach will improve flexibility, reliability, and security,
+ but this kind of environment come with some security questions we'll discuss in this paper.
+
+The companies take for granted that this new approach is better and more secure,
+so the use of this technologies rises twice every year as a marketing study made by
+Gartner IT infrastructure Operations and Management Summit in 2010, and in the top
+of this market is Vmware products and for the open source solution we have Qemu/KVM.
+I the other hand one study made by IBM in 2010 prove that this technologies are not unbreakable
+and the study show many types of vulnerabilities, but we concentrate in the hypervisors and
+try to answer two questions:
+\begin{description}
+\item[Escape to host] This vulnerability allow an attacker to have access to some resources
+in the host where the virtual machine is, like cpu time, hard drive and memory.
+\item[Escape to hypervisor] This vulnerability allow the attacker not to have direct access
+to the host resources as the last one but, the attacker can still having access to the resources
+of other virtual machines in the same host, compromising privacy and confidential data of other users.
+\end{description}
+
 \subsection{Impact of hypervisor vulnerabilites}
 There are many ways to acces a virtual machine, through other vulnerabilities of
 the softwares which are running inside of the virtual machine or through
