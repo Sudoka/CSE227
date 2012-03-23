@@ -70,3 +70,15 @@ ressources from the guest ?
 \section{Study case}
 
 \section{Awaited result}
+
+Our research show that products like vmware still having some vulnerabilities but 
+more the software become old less critical vulnerabilities like control hijacking are found,
+the same case is for Qemu/KVM, in the other hand we have also the hardware effort to
+improve the trusted computing base, so it's more difficult to control the hypervisor or even
+the host, but resent vulnerabilities in Vmware work station for example sharing folders
+between the host and the virtual machines showed that an attacker could exploit a vulnerability
+in this protocol and had access to all the folders in the host machine and not only the one was
+specified by the administrator.
+In a similar case we have KVM and sharing the network card could lead an attacker to create
+a denial of access in the ethernet device and make unreachable by ethernet other virtual machines
+sharing the same ethernet devices. 
