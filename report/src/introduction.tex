@@ -69,6 +69,23 @@ ressources from the guest ?
 
 \section{Study case}
 
+For our study we use the KVM public bug trackers and for Vmware we didn't be able
+to use the bug tracker because its private but we can still have access to the CVEs
+and some others less trusted sources like forums and unofficial bug trackers,
+we concentrate our research in two specific cases can we have access to the host
+resource or even control the host, or at least being able to have access to the resources
+or even take control of other virtual machines in the same host.
+Also for this research we use two types of virtualiazation:
+\begin{description}
+\item[Workstation] The workstation approach like vmware workstation, is meant 
+to development of virtual infrastructure or personal and small business use. The advantage 
+is easy and more flexible to use, but in the other hand scalability is totally lost.
+\item[Server] The server approach is meant to big data center, for medium and big companies,
+in this approach the scalability is easy, the migration, backup, and load balancing are very important
+in difference to the workstation approach. In the other hand is not that easy to use, and deployment
+of the physical infrastructure is not easy at first.
+\end{description}
+
 \section{Awaited result}
 
 Our research show that products like vmware still having some vulnerabilities but 
